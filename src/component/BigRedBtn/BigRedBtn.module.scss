@@ -1,0 +1,9 @@
+@import "../../assets/styles/themes.module.scss";
+
+.redBtn {
+  width: 18.5rem;
+  height: 3.7rem;
+  background-color: $bigRedBtn;
+  font-size: 1rem;
+  color: white;
+}

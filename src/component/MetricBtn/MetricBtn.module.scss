@@ -1,0 +1,37 @@
+@import "../../assets/styles/themes.module.scss";
+
+.btnContainer {
+  width: 8.375rem;
+  height: 7.1875rem;
+
+  & button {
+    width: 100%;
+    height: 100%;
+    border: solid 1px black;
+    border-radius: 1rem;
+  }
+
+  & .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .btnLabel {
+      font-size: 1.5rem;
+    }
+
+    & .btnSubLabel {
+      font-size: 1rem;
+    }
+
+    & span {
+      width: 90%;
+      text-align: start;
+    }
+  }
+}
+
+.selected {
+  background-color: $selectedBtn;
+}

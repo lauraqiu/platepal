@@ -3,6 +3,8 @@ import LoginPage from "./Containers/Pages/Login/Login";
 import LandingPage from "./Containers/Pages/LandingPage/LandingPage";
 import MetricPage from "./Containers/Pages/Metrics/Metrics";
 import { Route, Switch } from "react-router-dom";
+import 'fontsource-roboto';
+
 function App() {
   return (
     <div>

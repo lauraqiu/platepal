@@ -1,0 +1,37 @@
+.logo {
+    color: white;
+    font-family: 'Rubik';
+    font-size: 40px;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-button {
+    color: white;
+    background-color: #DB5A42;
+    font-family : 'Roboto';
+    font-weight : 400;
+    height: 59px;
+    width: 299px;
+    border: none;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.register-button {
+    color: #DB5A42;
+    background-color: white;
+    font-family : 'Roboto';
+    font-weight : 400;
+    height: 59px;
+    width: 299px;
+    border: none;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -1,15 +1,13 @@
 import React from 'react';
-import './LandingPage.css';
-import Helmet from 'react-helmet';
+import styles from './LandingPage.module.css';
 
 const LandingPage = () => {
     return (
-        <>
-            <Helmet bodyAttributes={{style: 'background-color : #FFD275'}}/>
-            <h3 className='logo'> PlatePal</h3>
-            <button className='login-button'>Login</button>
-            <button className='register-button'>Register</button>
-        </>
+        <div className={styles.fullPage}> 
+                <h3 className={styles.logo}> PlatePal</h3>
+                <button className={styles.loginButton}>Login</button>
+                <button className={styles.registerButton}>Register</button>
+        </div>
     )
 }
 export default LandingPage;

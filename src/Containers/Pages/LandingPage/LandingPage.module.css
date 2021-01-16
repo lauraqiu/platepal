@@ -1,0 +1,44 @@
+.fullPage{
+    position:absolute;
+    background-color: #FFD275;
+    height:100%;
+    width:100%;
+}
+
+.logo {
+    color: white;
+    font-family: 'Roboto';
+    font-size: 2.5em;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loginButton {
+    color: white;
+    background-color: #DB5A42;
+    font-family : 'Roboto';
+    font-weight : 400;
+    height: 3.69em;
+    width: 18.7em;
+    border: none;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.registerButton {
+    color: #DB5A42;
+    background-color: white;
+    font-family : 'Roboto';
+    font-weight : 400;
+    height: 3.69em;
+    width: 18.7em;
+    border: none;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

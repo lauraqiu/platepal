@@ -10,11 +10,7 @@ const OptionChips = (props) => {
   
   const handleClick = (index) => {
     let arrayCopy = [...chipArray];  
-    if (chipArray[index].color == 'primary') {
-      arrayCopy[index].color = 'secondary';
-    } else if (chipArray[index].color == 'secondary'){
-      arrayCopy[index].color = 'primary';
-    };
+    arrayCopy[index].selected = !chipArray[index].selected;
     setChipData(arrayCopy)
   };
 
@@ -25,7 +21,7 @@ const OptionChips = (props) => {
                 <Chip item
                 index={index}
                 label={data.label}
-                color={data.color} 
+                color={data.selected ? 'primary': 'default'} 
                 onClick={() => handleClick(index)}
                 className={styles.chip}
                 size='small'

@@ -2,21 +2,8 @@ import React from 'react';
 import allergiesImage from './images/allergies.png';
 import specialDiets from './images/diet.jpg';
 import { Grid, Button } from '@material-ui/core';
-import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import { useStyles } from './styles.js';
 import OptionChips from './OptionChips.js';
-
-// change Material UI default colours
-const theme = createMuiTheme({
-    palette: {
-       primary: {
-          main: "#FFD275" // yellow
-                 },
-       secondary: {
-          main: "#E5E5E5" //grey
-                  }
-             },
-    });
 
 const DietaryRestrictions = () => {
     const styles = useStyles();
@@ -42,26 +29,24 @@ const DietaryRestrictions = () => {
     ]
     return (
         <>  
-            <ThemeProvider theme={theme}>
-                <h1 className={styles.root}>Any Dietary Restrictions?</h1>
-                <div className={styles.root}>
-                    <Grid container className={styles.header}>
-                        <img item className={styles.photo} src={allergiesImage} alt='allergies logo'/>
-                        <h2 item className={styles.header} >Allergies</h2>
-                        <OptionChips item array={allergies}/>
-                    </Grid>
-                </div>
-                <div className={styles.root}>
-                    <Grid container className={styles.header}>
-                        <img item className={styles.photo} src={specialDiets} alt='special diets logo'/>
-                        <h2 item className={styles.header}>Special Diets</h2>
-                        <OptionChips item array={diets}/>
-                    </Grid>
-                </div>
-                <Grid container justify="center">
-                    <Button item className={styles.button}>Next</Button>
+            <h1 className={styles.root}>Any Dietary Restrictions?</h1>
+            <div className={styles.root}>
+                <Grid container className={styles.header}>
+                    <img item className={styles.photo} src={allergiesImage} alt='allergies logo'/>
+                    <h2 item className={styles.header} >Allergies</h2>
+                    <OptionChips item options={allergies}/>
                 </Grid>
-            </ThemeProvider>
+            </div>
+            <div className={styles.root}>
+                <Grid container className={styles.header}>
+                    <img item className={styles.photo} src={specialDiets} alt='special diets logo'/>
+                    <h2 item className={styles.header}>Special Diets</h2>
+                    <OptionChips item options={diets}/>
+                </Grid>
+            </div>
+            <Grid container justify="center">
+                <Button item className={styles.button}>Next</Button>
+            </Grid>
         </>
     )
 }

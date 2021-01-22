@@ -5,10 +5,22 @@ import MetricPage from "./Containers/Pages/Metrics/Metrics";
 import { Route, Switch } from "react-router-dom";
 import 'fontsource-roboto';
 import DietaryRestrictions from "./Containers/Pages/DietaryRestrictions/DietaryRestrictions.js";
+import {createMuiTheme, ThemeProvider} from "@material-ui/core";
+
+const theme = createMuiTheme({
+  palette: {
+     primary: {
+        main: "#FFD275" // yellow
+      },
+     secondary: {
+        main: "#DB5A42" //red
+      }
+  },
+});
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Switch>
         <Route path="/create" component={CreateAccountPage} />
         <Route path="/login" component={LoginPage} />
@@ -16,7 +28,7 @@ function App() {
         <Route path="/metric" exact component={MetricPage} />
         <Route path="/dietaryrestrictions" exact component={DietaryRestrictions} />
       </Switch>
-    </div>
+    </ThemeProvider>
   );
 }
 

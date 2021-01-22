@@ -6,8 +6,7 @@ import {useStyles} from './styles.js';
 
 const OptionChips = (props) => {
   const styles = useStyles();
-
-  const [chipArray, setChipData] = useState(props.array);
+  const [chipArray, setChipData] = useState(props.options);
   
   const handleClick = (index) => {
     let arrayCopy = [...chipArray];  

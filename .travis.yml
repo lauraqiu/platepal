@@ -1,0 +1,6 @@
+# Doc: if yarn.lock file is present in repo, Travis CI runs tests using 'yarn' so it fails
+# Because we are using NPM, yarn.lock doesn't matter to us. Delete it if created.
+
+language: node_js
+node_js:
+  - lts/*

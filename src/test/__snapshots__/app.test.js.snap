@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="fullPage"
+  >
+    <h3
+      className="logo"
+      data-testid="logo"
+    >
+      PlatePal
+    </h3>
+    <button
+      className="loginButton"
+    >
+      Login
+    </button>
+    <button
+      className="registerButton"
+    >
+      Register
+    </button>
+  </div>
+</div>
+`;

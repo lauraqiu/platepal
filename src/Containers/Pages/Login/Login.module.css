@@ -1,0 +1,50 @@
+.loginComponent {
+    background-color: white;
+    text-align: center;
+    padding: 15%;
+}
+
+.loginTitle {
+    font-size: 300%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: orange;
+    text-align: center;
+}
+
+.loginParagraph {
+    font-size: medium;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: gray;
+}
+
+.loginParagraphOrange {
+    font-size: medium;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:orange;
+    padding-top: 25%;
+}
+
+.loginParagraphOrange:active {
+    color: rgb(185, 185, 185);
+}
+
+.loginLogo {
+    width: 50%;
+    height: 50%;
+    padding-top: 25%;
+    padding-bottom: 10%;
+}
+
+.loginButton {
+    border-style: round;
+    background-color: rgb(84, 115, 253);
+    padding: 3%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    border-radius: 10px;
+}
+
+.loginButton:active {
+    background-color: white;
+    color: grey;
+}

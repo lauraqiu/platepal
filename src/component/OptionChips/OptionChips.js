@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Chip from '@material-ui/core/Chip';
 import Grid from '@material-ui/core/Grid';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import {useStyles} from './styles.js';
+import {useStyles} from '../../assets/styles/dietaryRestrictionStyles.js';
 
 const OptionChips = (props) => {
   const styles = useStyles();

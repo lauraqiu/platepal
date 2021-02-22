@@ -1,9 +1,9 @@
 import React from 'react';
-import allergiesImage from './images/allergies.png';
-import specialDiets from './images/diet.jpg';
+import allergiesImage from '../../../assets/images/allergies.png';
+import specialDiets from '../../../assets/images/diet.jpg';
 import {Grid, Button} from '@material-ui/core';
-import {useStyles} from './styles.js';
-import OptionChips from './OptionChips.js';
+import {useStyles} from '../../../assets/styles/dietaryRestrictionStyles';
+import OptionChips from '../../../component/OptionChips/OptionChips';
 import firebase from '../../../firebase';
 
 const DietaryRestrictions = () => {

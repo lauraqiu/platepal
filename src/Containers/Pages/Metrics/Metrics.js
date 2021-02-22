@@ -3,16 +3,44 @@ import MetricBtn from "../../../component/MetricBtn/MetricBtn";
 import messages from "../../../constant/messages";
 import BigRedBtn from "../../../component/BigRedBtn/BigRedBtn";
 import styles from "./Metrics.module.scss";
+import firebase from '../../../firebase';
+
 class Metrics extends Component {
+
   state = {
     selectedId: 1,
   };
+
+  updateMetric = (m) => {
+
+    var currentU = firebase.auth().currentUser
+      if (currentU == null)
+        currentU = "anonymous";
+      else
+        currentU = currentU = firebase.auth().currentUser.uid
+
+    firebase.database().ref('userID/' + currentU).set({
+      preference: {
+        metric: m
+      }
+    }
+    , (error) => {
+      if (error) {
+        // The write failed...
+        console.log("Write failed")
+      } else {
+        // Data saved successfully!
+        console.log("Write successful")
+      }
+    });
+  }
 
   toggleSelectedBtn = (value) => {
     this.setState({
       selectedId: value,
     });
   };
+
   render() {
     return (
       <div className={styles.metricsPage}>
@@ -36,7 +64,8 @@ class Metrics extends Component {
           />
         </div>
 
-        <BigRedBtn styles={styles.redBtn} value={messages.next} />
+        <BigRedBtn styles={styles.redBtn} value={messages.next}/> 
+        {/* TODO: Add onclick to the function e.g. onClick={() => this.updateMetric(this.state.selectedId)} but one that works */}
       </div>
     );
   }

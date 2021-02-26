@@ -4,7 +4,8 @@ const routes = {
 
     // User preference related
     dietaryRestriction: "dietaryRestriction",
-    metrics: "metrics"
+    metrics: "metrics",
+    expandedRecipe: "expandedRecipe"
 }
 
 export default routes;

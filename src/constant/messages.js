@@ -1,15 +1,18 @@
 const messages = {
   // Metrics
-  US: "US",
-  USExamples: "eg. lb, cups, oz",
+  US: 'US',
+  USExamples: 'eg. lb, cups, oz',
 
-  metric: "Metric",
-  metricExamples: "eg. g, mL",
+  metric: 'Metric',
+  metricExamples: 'eg. g, mL',
 
-  metricsPageHeading: "Do you use Imperial (US) or Metric Units?",
+  metricsPageHeading: 'Do you use Imperial (US) or Metric Units?',
 
   // Common
-  next: "Next",
+  next: 'Next',
+
+  //Saved Recipe
+  savedRecipe: 'Saved Recipes',
 };
 
 export default messages;

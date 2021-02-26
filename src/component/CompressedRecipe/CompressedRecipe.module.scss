@@ -1,0 +1,54 @@
+@import '../../assets/styles/themes.module.scss';
+
+.recipeContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 5.625em;
+  border: 0.01875em solid $compressedBorderColor;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.recipeInfoContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  .recipeName {
+    display: flex;
+    align-items: center;
+    margin-top: 1.125em;
+    height: 30%;
+    font-weight: 500;
+    font-size: 1em;
+    width: auto;
+    letter-spacing: -0.0255em;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 1em;
+    margin-bottom: 0;
+  }
+}
+.recipeImageContainer {
+  flex-basis: 5.625em;
+  flex-grow: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  .recipeImage {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.recipeQuickSummaryContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}

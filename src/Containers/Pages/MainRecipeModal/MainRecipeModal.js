@@ -5,44 +5,10 @@ import star from '../../../assets/images/star.png';
 import check from '../../../assets/images/check.png';
 import smoothie from "../../../assets/images/Creamy-Watermelon-Smoothie.jpg";
 //import dataFunctions from '../../../dataFunctions.js'
-import firebase from '../../../firebase';
 
 class MainRecipeModal extends React.Component {
 
-    addLikedRecipe(recipe) {
-
-        var currentU = firebase.auth().currentUser
-        if (currentU == null)
-            currentU = "anonymous";
-        else
-            currentU = currentU = firebase.auth().currentUser.uid
-
-        firebase.database().ref('userID/' + currentU + '/todayRecipe/Timestamp').push({
-            liked: recipe           
-        }
-        , (error) => {
-            if (error) {
-            // The write failed...
-            console.log("Write failed");
-            } else {
-            // Data saved successfully!
-            console.log("Write successful");
-            }
-        });
-    }
-
-    dislike() {
-        // TODO: dislike (show next)
-    }
-
-    star() {
-        // TODO: show full recipe
-    }
-
-    imageClicked() {
-        // TODO: fullsize image?
-        console.log("Image clicked");
-    }
+    
 
     render() {
 

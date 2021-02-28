@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import allergiesImage from '../../../assets/images/allergies.png';
 import specialDiets from '../../../assets/images/diet.jpg';
 import {Grid, Button} from '@material-ui/core';
 import {useStyles} from '../../../assets/styles/dietaryRestrictionStyles';
 import OptionChips from '../../../component/OptionChips/OptionChips';
-import firebase from '../../../firebase';
+import {addAllergy, addSpecialDiet} from "../../../utilities/firebase/index"
+import { withRouter } from 'react-router';
+import routes from '../../../constant/routes';
 
-const DietaryRestrictions = () => {
+const DietaryRestrictions = (props) => {
     const styles = useStyles();
-    const allergies = [
+    const [allergies, setAllergies] = useState([
         { label: 'peanut', selected: false },
         { label: 'dairy', selected: false },
         { label: 'tree nuts', selected: false },
@@ -17,8 +19,9 @@ const DietaryRestrictions = () => {
         { label: 'soy', selected: false },
         { label: 'gluten', selected: false },
         { label: 'egg', selected: false },
-    ]
-    const diets = [
+    ])
+
+    const [diets, setDiets] = useState([
         { label: 'classic', selected: false },
         { label: 'low carb', selected: false },
         { label: 'keto', selected: false },
@@ -27,50 +30,18 @@ const DietaryRestrictions = () => {
         { label: 'vegetarian', selected: false },
         { label: 'pescatarian', selected: false },
         { label: 'vegan', selected: false },
-    ]
+    ])
 
-    const addAllergy = (allergy) => {
+    const filterItem = (items) => {
+        const filtered = items.filter((item) => {
+            return item.selected;
+        })
 
-        var currentU = firebase.auth().currentUser
-        if (currentU == null)
-            currentU = "anonymous";
-        else
-            currentU = currentU = firebase.auth().currentUser.uid
+        const labelOnly = filtered.map((item) => {
+            return item.label
+        })
 
-        firebase.database().ref('userID/' + currentU + '/preference').push({
-            allergies: allergy
-        }
-        , (error) => {
-            if (error) {
-            // The write failed...
-            console.log("Write failed")
-            } else {
-            // Data saved successfully!
-            console.log("Write successful")
-            }
-        });
-    }
-
-    const addSpecialDiet = (diet) => {
-
-        var currentU = firebase.auth().currentUser
-        if (currentU == null)
-            currentU = "anonymous";
-        else
-            currentU = currentU = firebase.auth().currentUser.uid
-
-        firebase.database().ref('userID/' + currentU + '/preference').push({
-            diet: diet
-        }
-        , (error) => {
-            if (error) {
-            // The write failed...
-            console.log("Write failed")
-            } else {
-            // Data saved successfully!
-            console.log("Write successful")
-            }
-        });
+        return labelOnly
     }
 
     return (
@@ -80,21 +51,26 @@ const DietaryRestrictions = () => {
                 <Grid container className={styles.header}>
                     <img item className={styles.photo} src={allergiesImage} alt='allergies logo'/>
                     <h2 item className={styles.header} >Allergies</h2>
-                    <OptionChips item options={allergies}/>
+                    <OptionChips item options={allergies} setOptions = {setAllergies} />
                 </Grid>
             </div>
             <div className={styles.root}>
                 <Grid container className={styles.header}>
                     <img item className={styles.photo} src={specialDiets} alt='special diets logo'/>
                     <h2 item className={styles.header}>Special Diets</h2>
-                    <OptionChips item options={diets}/>
+                    <OptionChips item options={diets} setOptions = {setDiets}/>
                 </Grid>
             </div>
             <Grid container justify="center">
-                <Button item className={styles.button}>Next</Button>
-                {/* TODO: get the selected info and add it to the database using the functions above */}
+                <Button item className={styles.button} 
+                    onClick = {() => {
+                        addAllergy(filterItem(allergies));
+                        addSpecialDiet(filterItem(diets));
+                        props.history.push(`/${routes.metrics}`)
+                    }}>Next
+                </Button>
             </Grid>
         </>
     )
 }
-export default DietaryRestrictions;
+export default withRouter(DietaryRestrictions);

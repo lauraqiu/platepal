@@ -6,17 +6,16 @@ import {useStyles} from '../../assets/styles/dietaryRestrictionStyles.js';
 
 const OptionChips = (props) => {
   const styles = useStyles();
-  const [chipArray, setChipData] = useState(props.options);
   
   const handleClick = (index) => {
-    let arrayCopy = [...chipArray];  
-    arrayCopy[index].selected = !chipArray[index].selected;
-    setChipData(arrayCopy)
+    let arrayCopy = [...props.options];  
+    arrayCopy[index].selected = !props.options[index].selected;
+    props.setOptions(arrayCopy)
   };
 
   return (
     <Grid container>
-        {chipArray.map((data, index) => {
+        {props.options.map((data, index) => {
             return (
                 <Chip item
                 index={index}

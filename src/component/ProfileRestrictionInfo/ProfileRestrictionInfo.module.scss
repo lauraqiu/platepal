@@ -1,0 +1,40 @@
+@import '../../assets/styles/themes.module.scss';
+
+.specificPreferenceTitle {
+  display: flex;
+  font-size: 15px;
+  margin: 0;
+  width: 75px;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+.specificPreferenceContainer {
+  display: flex;
+  margin-left: 34px;
+  max-width: 300px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 0.3px solid $preferenceSettingColor;
+}
+
+.preferenceList {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  margin: 0;
+  margin-left: 34px;
+  list-style-type: none;
+  padding: 0;
+  .preferenceItem {
+    padding: 0;
+    overflow: auto;
+    margin-right: 10px;
+    text-transform: capitalize;
+    font-size: 15px;
+    letter-spacing: -0.408px;
+    color: $preferenceSettingColor;
+  }
+}

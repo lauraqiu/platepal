@@ -1,1 +1,6 @@
-export { addSpecialDiet, addAllergy, addLikedRecipe } from './firebaseActions';
+export {
+  addSpecialDiet,
+  addAllergy,
+  addLikedRecipe,
+  getPreferences,
+} from './firebaseActions';

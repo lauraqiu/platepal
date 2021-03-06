@@ -1,73 +1,87 @@
-import constants from "./firebaseConstants"
-import firebase from "./firebase"
+import constants from './firebaseConstants';
+import firebase from './firebase';
 
 const authenticateUser = () => {
-    var currentU = firebase.auth().currentUser
-      if (currentU == null)
-        return constants.anonymous;
-      else
-        return firebase.auth().currentUser.uid
-}
+  var currentU = firebase.auth().currentUser;
+  if (currentU == null) return constants.anonymous;
+  else return firebase.auth().currentUser.uid;
+};
 
 const errorHandling = (error) => {
-    if (error) {
-        // The write failed...
-        console.log("Write failed")
-        } else {
-        // Data saved successfully!
-        console.log("Write successful")
-    }
-}
+  if (error) {
+    // The write failed...
+    console.log('Write failed');
+  } else {
+    // Data saved successfully!
+    console.log('Write successful');
+  }
+};
 
 export const addAllergy = (allergies) => {
+  var currentU = authenticateUser();
 
-    var currentU = authenticateUser()
-
-    firebase.database().ref(`userID/${currentU}/${constants.preference}`).update({allergies}
-    , (error) => {
-        errorHandling(error)
+  firebase
+    .database()
+    .ref(`userID/${currentU}/${constants.preference}`)
+    .update({ allergies }, (error) => {
+      errorHandling(error);
     });
-}
+};
 
 export const addSpecialDiet = (diet) => {
+  var currentU = authenticateUser();
 
-    var currentU = authenticateUser()
-
-    firebase.database().ref(`userID/${currentU}/${constants.preference}`).update({diet}
-    , (error) => {
-        errorHandling(error)
+  firebase
+    .database()
+    .ref(`userID/${currentU}/${constants.preference}`)
+    .update({ diet }, (error) => {
+      errorHandling(error);
     });
-}
+};
 
 export const addLikedRecipe = (recipe) => {
+  var currentU = authenticateUser();
 
-    var currentU = authenticateUser()
-
-    firebase.database().ref('userID/' + currentU + '/todayRecipe/Timestamp').push({
-        liked: recipe           
-    }
-    , (error) => {
-        errorHandling(error)
-    });
-}
+  firebase
+    .database()
+    .ref('userID/' + currentU + '/todayRecipe/Timestamp')
+    .push(
+      {
+        liked: recipe,
+      },
+      (error) => {
+        errorHandling(error);
+      }
+    );
+};
 
 export const superLike = () => {
-    // TODO: show full recipe
-}
+  // TODO: show full recipe
+};
 
 export const updateMetric = (m) => {
+  var currentU = authenticateUser();
 
-    var currentU = authenticateUser()
-
-    firebase.database().ref('userID/' + currentU).set({
-      preference: {
-        metric: m
+  firebase
+    .database()
+    .ref('userID/' + currentU)
+    .set(
+      {
+        preference: {
+          metric: m,
+        },
+      },
+      (error) => {
+        errorHandling(error);
       }
-    }
-    , (error) => {
-        errorHandling(error)
-    });
-  }
+    );
+};
 
+export const getPreferences = () => {
+  var currentU = authenticateUser();
 
- 
+  return firebase
+    .database()
+    .ref(`userID/${currentU}/${constants.preference}`)
+    .get();
+};

@@ -1,0 +1,26 @@
+.metricPreferenceContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .metricPreferenceTitle {
+    font-size: 24px;
+    padding-left: 30px;
+    letter-spacing: -0.408px;
+    color: #db5a42;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+}
+
+.metricUsed {
+  margin-left: 110px;
+  text-transform: capitalize;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  color: #a8a8a8;
+  .metricChangeButton {
+    margin-left: 8px;
+  }
+}

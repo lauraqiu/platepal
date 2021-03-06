@@ -1,0 +1,42 @@
+@import '../../../assets/styles/themes.module.scss';
+
+.profilePageContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profilePictureContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 42px;
+  padding-bottom: 14px;
+  width: 100%;
+  border-bottom: 0.3px solid $preferenceSettingColor;
+  .profilePicture {
+    height: 124px;
+    width: 124px;
+  }
+}
+
+.profileSettingsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  flex: 1;
+
+  .preferenceType {
+    font-size: 24px;
+    padding-left: 30px;
+    letter-spacing: -0.408px;
+    color: $preferenceSettingTitleColor;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: normal;
+  }
+}

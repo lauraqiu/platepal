@@ -12,9 +12,6 @@ import Spoonacular_routes, {
 } from '../../../utilities/API/Spoonacular.js';
 import { addLikedRecipe } from '../../../utilities/firebase/index.js';
 
-import BottomNavBar from '../../../component/navbars/BottomNavbar';
-import TopNavbar from '../../../component/navbars/TopNavbar';
-
 class MainRecipeModal extends React.Component {
   constructor(props) {
     super(props);
@@ -53,11 +50,6 @@ class MainRecipeModal extends React.Component {
 
     return (
       <div className={styles.fullPage}>
-
-{/* Top nav bar */}
-        <TopNavbar/>
-
-
         <h3 className={styles.recipeName}>
           {this.state.spoonacularRecipe.title}
         </h3>
@@ -93,11 +85,6 @@ class MainRecipeModal extends React.Component {
           src={check}
           onClick={() => addLikedRecipe(this.state.spoonacularRecipe.id)}
         ></input>
-
-{/* bottom nav bar */}
-        
-        <BottomNavBar fill='home'/>
-
       </div>
     );
   }

@@ -15,8 +15,10 @@ import mainUITheme from './assets/styles/mainUITheme';
 import 'fontsource-roboto';
 
 import routes from './constant/routes';
+import Navbar from './component/navbars/Navbar.js';
 
 function App() {
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={mainUITheme}>
@@ -28,10 +30,6 @@ function App() {
             path={`/${routes.dietaryRestriction}`}
             exact
             component={DietaryRestrictions}
-          />
-          <Route
-            path={`/${routes.main}`}
-            render={(props) => <MainRecipeModal />}
           />
           <Route
             path={`/${routes.expandedSavedRecipe}`}
@@ -48,7 +46,24 @@ function App() {
             exact
             component={IngredientSelection}
           />
-          <Route path={`/${routes.profile}`} exact component={ProfilePage} />
+          <Route
+            path={`/${routes.main}`}
+            render={(props) => 
+              <div>
+                <Navbar fill='home'/>
+                <MainRecipeModal/>  
+              </div>
+            }
+          />
+          <Route 
+            path={`/${routes.profile}`} 
+            render={(props) => 
+              <div>
+                <Navbar fill='person'/>
+                <ProfilePage/>
+              </div>
+            }
+          /> 
         </Switch>
       </ThemeProvider>
     </BrowserRouter>

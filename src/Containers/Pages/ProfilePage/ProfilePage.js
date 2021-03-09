@@ -6,8 +6,6 @@ import ProfileRestrictionInfo from '../../../component/ProfileRestrictionInfo/Pr
 import { getPreferences } from '../../../utilities/firebase/index.js';
 import LogoutBtn from '../../../component/LogoutBtn/LogoutBtn.js';
 import ProfileMetricInfo from '../../../component/ProfileMetricInfo/ProfileMetricInfo.js';
-import TopNavbar from '../../../component/navbars/TopNavbar';
-import BottomNavbar from '../../../component/navbars/BottomNavbar';
 
 const ProfilePage = (props) => {
   const initialState = {
@@ -42,7 +40,6 @@ const ProfilePage = (props) => {
 
   return (
     <div className={styles.profilePageContainer}>
-      <TopNavbar/>
       <div className={styles.profilePictureContainer}>
         <img
           className={styles.profilePicture}
@@ -64,7 +61,6 @@ const ProfilePage = (props) => {
         <ProfileMetricInfo preferenceArr={userPreferences.metric} />
       </div>
       <LogoutBtn onClick={() => logoutHandler()} />
-      <BottomNavbar fill='person'/>
     </div>
   );
 };

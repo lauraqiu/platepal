@@ -45,7 +45,7 @@ export const addLikedRecipe = (recipe) => {
   firebase
     .database()
     .ref('userID/' + currentU + '/todayRecipe/Timestamp')
-    .push(
+    .update(
       {
         liked: recipe,
       },

@@ -39,41 +39,23 @@ export const addSpecialDiet = (diet) => {
     });
 };
 
-export const addLikedRecipe = (recipe, title) => {
-  var currentU = authenticateUser();
-  console.log("reached");
+export const addLikedRecipe = (recipe, section, title) => {
+  return new Promise(() => {
+    var currentU = authenticateUser();
+    console.log("reached");
 
-  firebase
-    .database()
-    .ref('userID/' + currentU + '/todayRecipe/Timestamp/liked/' + recipe)
-    .set(
-      {
-        recipe: title,
-      },
-      (error) => {
-        errorHandling(error);
-      }
-    );
-
-    window.location.reload();
-};
-
-export const superLike = (recipe, title) => {
-  var currentU = authenticateUser();
-
-  firebase
-    .database()
-    .ref('userID/' + currentU + '/todayRecipe/Timestamp/superliked/' + recipe)
-    .set(
-      {
-        recipe: title,
-      },
-      (error) => {
-        errorHandling(error);
-      }
-    );
-
-    window.location.reload();
+    firebase
+      .database()
+      .ref('userID/' + currentU + '/todayRecipe/Timestamp/' + section + '/' + recipe)
+      .set(
+        {
+          recipe: title,
+        },
+        (error) => {
+          errorHandling(error);
+        }
+      )
+  });
 };
 
 export const updateMetric = (m) => {

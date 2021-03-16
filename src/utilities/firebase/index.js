@@ -2,6 +2,5 @@ export {
   addSpecialDiet,
   addAllergy,
   addLikedRecipe,
-  getPreferences,
-  superLike
+  getPreferences
 } from './firebaseActions';

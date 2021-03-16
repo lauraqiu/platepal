@@ -39,24 +39,41 @@ export const addSpecialDiet = (diet) => {
     });
 };
 
-export const addLikedRecipe = (recipe) => {
+export const addLikedRecipe = (recipe, title) => {
   var currentU = authenticateUser();
+  console.log("reached");
 
   firebase
     .database()
-    .ref('userID/' + currentU + '/todayRecipe/Timestamp')
-    .push(
+    .ref('userID/' + currentU + '/todayRecipe/Timestamp/liked/' + recipe)
+    .set(
       {
-        liked: recipe,
+        recipe: title,
       },
       (error) => {
         errorHandling(error);
       }
     );
+
+    window.location.reload();
 };
 
-export const superLike = () => {
-  // TODO: show full recipe
+export const superLike = (recipe, title) => {
+  var currentU = authenticateUser();
+
+  firebase
+    .database()
+    .ref('userID/' + currentU + '/todayRecipe/Timestamp/superliked/' + recipe)
+    .set(
+      {
+        recipe: title,
+      },
+      (error) => {
+        errorHandling(error);
+      }
+    );
+
+    window.location.reload();
 };
 
 export const updateMetric = (m) => {

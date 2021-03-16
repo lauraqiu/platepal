@@ -3,4 +3,5 @@ export {
   addAllergy,
   addLikedRecipe,
   getPreferences,
+  superLike
 } from './firebaseActions';

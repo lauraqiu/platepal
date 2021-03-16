@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './MainRecipeModal.module.scss';
-import pass from '../../../assets/images/pass.png';
-import star from '../../../assets/images/star.png';
-import check from '../../../assets/images/check.png';
+import pass from '../../../assets/images/x.svg';
+import star from '../../../assets/images/superlike.svg';
+import check from '../../../assets/images/checkmark.svg';
 import smoothie from '../../../assets/images/Creamy-Watermelon-Smoothie.jpg';
 //import dataFunctions from '../../../dataFunctions.js'
 
@@ -10,7 +10,7 @@ import { axiosInstance } from '../../../utilities/API/axiosInstance.js';
 import Spoonacular_routes, {
   API_KEY,
 } from '../../../utilities/API/Spoonacular.js';
-import { addLikedRecipe } from '../../../utilities/firebase/index.js';
+import { addLikedRecipe, superLike } from '../../../utilities/firebase/index.js';
 
 class MainRecipeModal extends React.Component {
   constructor(props) {
@@ -42,6 +42,10 @@ class MainRecipeModal extends React.Component {
       });
   }
 
+  moveToNext() {
+    window.location.reload();
+  }
+
   render() {
     // This will later come from Spoonacular API
     const name = 'Creamy Watermelon Smoothie';
@@ -71,19 +75,19 @@ class MainRecipeModal extends React.Component {
           type='image'
           className={styles.bigButton}
           src={pass}
-          onClick={this.dislike}
+          onClick={() => this.moveToNext()}
         ></input>
         <input
           type='image'
           className={styles.lilButton}
           src={star}
-          onClick={this.star}
+          onClick={() => superLike(this.state.spoonacularRecipe.id, this.state.spoonacularRecipe.title)}
         ></input>
         <input
           type='image'
           className={styles.bigButton}
           src={check}
-          onClick={() => addLikedRecipe(this.state.spoonacularRecipe.id)}
+          onClick={() => addLikedRecipe(this.state.spoonacularRecipe.id, this.state.spoonacularRecipe.title)}
         ></input>
       </div>
     );

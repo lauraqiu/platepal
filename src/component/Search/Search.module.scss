@@ -1,0 +1,84 @@
+@import "../../assets/styles/themes.module.scss";
+
+.searchContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    box-sizing: border-box;
+    top: 0;
+    background-color: white;
+}
+
+.upper {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    background-color: rgba(235, 235, 235, 0.94);
+    justify-content: center
+}
+
+.backBtn {
+    position: absolute;
+    left: 0;
+    padding-left: 0.5rem;
+}
+
+.label {
+    display: inline-block;
+    font-size: 24px;
+}
+
+.searchInput {
+    margin: 1.5rem;
+    margin-bottom: 0;
+    width: 20rem;
+    height: 2.25rem;
+    background-color: $searchInputBackground;
+    border-radius: 20px;
+    border: none;
+    outline: 0;
+    color: $searchInputPlaceholder;
+    padding: 0 1.5rem;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+}
+
+.algoliaLogo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0.5rem;
+    padding-left: 0.5rem;
+    span {
+        font-size: 0.8rem;
+    }
+    img {
+        padding-left: 3px;
+        height: 0.8rem;
+    }
+}
+
+.list {
+
+    list-style-type: none;
+    padding-left: 0;
+    & .listItem {
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        padding: 0.5rem;
+        padding-left: 2rem;
+        border-top: 1px solid $searchInputBackground;
+        border-bottom: 1px solid $searchInputBackground;
+
+        
+    }
+
+    & .listItem:hover, & .listItem:active{
+        background-color: $selectedBtn;
+    }
+}
+
+
+

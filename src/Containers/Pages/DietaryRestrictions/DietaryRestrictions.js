@@ -7,6 +7,7 @@ import OptionChips from '../../../component/OptionChips/OptionChips';
 import {addAllergy, addSpecialDiet} from "../../../utilities/firebase/index"
 import { withRouter } from 'react-router';
 import routes from '../../../constant/routes';
+import OptionSelection from '../../../component/OptionSelection/OptionSelection';
 
 const DietaryRestrictions = (props) => {
     const styles = useStyles();
@@ -30,7 +31,7 @@ const DietaryRestrictions = (props) => {
         { label: 'vegetarian', selected: false },
         { label: 'pescatarian', selected: false },
         { label: 'vegan', selected: false },
-    ])
+    ]) 
 
     const filterItem = (items) => {
         const filtered = items.filter((item) => {
@@ -47,20 +48,8 @@ const DietaryRestrictions = (props) => {
     return (
         <>  
             <h1 className={styles.root}>Any Dietary Restrictions?</h1>
-            <div className={styles.root}>
-                <Grid container className={styles.header}>
-                    <img item className={styles.photo} src={allergiesImage} alt='allergies logo'/>
-                    <h2 item className={styles.header} >Allergies</h2>
-                    <OptionChips item options={allergies} setOptions = {setAllergies} />
-                </Grid>
-            </div>
-            <div className={styles.root}>
-                <Grid container className={styles.header}>
-                    <img item className={styles.photo} src={specialDiets} alt='special diets logo'/>
-                    <h2 item className={styles.header}>Special Diets</h2>
-                    <OptionChips item options={diets} setOptions = {setDiets}/>
-                </Grid>
-            </div>
+            <OptionSelection header="Allergies" src={allergiesImage} alt="allergies logo" options={allergies} setOptions={setAllergies}/>
+            <OptionSelection header="Special Diets" src={specialDiets} alt="special diets logo" options={diets} setOptions={setDiets}/>
             <Grid container justify="center">
                 <Button item className={styles.button} 
                     onClick = {() => {

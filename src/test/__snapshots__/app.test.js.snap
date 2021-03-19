@@ -4,6 +4,11 @@ exports[`renders correctly 1`] = `
 <div
   className="fullPage"
 >
+  <img
+    alt="plate pal logo"
+    className="logoImage"
+    src="plate_pal_logo.png"
+  />
   <h3
     className="logo"
     data-testid="logo"

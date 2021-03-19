@@ -1,26 +1,26 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  title: {
-    fontFamily: 'Roboto',
-    fontWeight: 500,
-    padding: 30,
-    paddingBottom: 0,
-    marginBlockEnd: 5
-  },
-  container: {
+  root: {
     display: 'flex',
     justifyContent: 'left',
     flexWrap: 'wrap',
-    padding: 30,
-    paddingBottom: 0,
-    marginBlockEnd: 5
+    listStyle: 'none',
+    padding: theme.spacing(2),
+    margin: 35,
+    fontFamily: 'Roboto',
+    fontWeight: 500,
   },
-  text: {
-    color: '#DB5A42',
-    fontSize: '0.9em',
-    paddingLeft: 30,
-    marginBlock: 0
+  header: {
+    alignItems: 'center',
+    fontSize: '1em',
+    fontFamily: 'Roboto',
+    fontWeight: 400
+  },
+  photo:{
+    margin: theme.spacing(0.5),
+    height: '2.6em', 
+    width: '2.6em'
   },
   button: {
     display: 'flex',
@@ -41,6 +41,13 @@ const useStyles = makeStyles((theme) => ({
         }
       }
     }
+  },
+  chip: {
+    margin: theme.spacing(0.5),
+  },
+  icon: {
+    margin: theme.spacing(0.5),
+    color: '#FFD275'
   },
 }));
 export { useStyles };

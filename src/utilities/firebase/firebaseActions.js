@@ -39,10 +39,42 @@ export const addSpecialDiet = (diet) => {
     });
 };
 
+export const addDairyOption = (items) => {
+  var currentU = authenticateUser();
+
+  firebase
+    .database()
+    .ref(`userID/${currentU}/${constants.preference}`)
+    .update({ [constants.preference]: items }, (error) => {
+      errorHandling(error);
+    });
+};
+
+export const addProduceOption = (items) => {
+  var currentU = authenticateUser();
+
+  firebase
+    .database()
+    .ref(`userID/${currentU}/${constants.preference}`)
+    .update({ [constants.produceOption]: items }, (error) => {
+      errorHandling(error);
+    });
+};
+
+export const addBakingOption = (items) => {
+  var currentU = authenticateUser();
+
+  firebase
+    .database()
+    .ref(`userID/${currentU}/${constants.preference}`)
+    .update({ [constants.bakingOption]: items }, (error) => {
+      errorHandling(error);
+    });
+};
+
 export const addLikedRecipe = (recipe, section, title) => {
   return new Promise(() => {
     var currentU = authenticateUser();
-    console.log("reached");
 
     firebase
       .database()

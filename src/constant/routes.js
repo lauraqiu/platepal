@@ -9,6 +9,7 @@ const routes = {
   expandedRecipe: 'expandedRecipe',
   ingredientSelection: 'ingredientSelection',
   expandedSavedRecipe: 'expandedSavedRecipe',
+  adjustOptions: "adjustOptions",
 };
 
 export default routes;

@@ -9,14 +9,17 @@ import ExpandedSavedRecipe from './Containers/Pages/ExpandedSavedRecipe/Expanded
 import ExpandedRecipe from './Containers/Pages/ExpandedRecipe/ExpandedRecipe.js';
 import IngredientSelection from './Containers/Pages/IngredientSelection/IngredientSelection.js';
 import ProfilePage from './Containers/Pages/ProfilePage/ProfilePage.js';
+import AdjustOptions from "./Containers/Pages/AdjustOptions/AdjustOptions.js";
 
 import { ThemeProvider } from '@material-ui/core';
 import mainUITheme from './assets/styles/mainUITheme';
 import 'fontsource-roboto';
 
 import routes from './constant/routes';
+import Navbar from './component/navbars/Navbar.js';
 
 function App() {
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={mainUITheme}>
@@ -28,10 +31,6 @@ function App() {
             path={`/${routes.dietaryRestriction}`}
             exact
             component={DietaryRestrictions}
-          />
-          <Route
-            path={`/${routes.main}`}
-            render={(props) => <MainRecipeModal />}
           />
           <Route
             path={`/${routes.expandedSavedRecipe}`}
@@ -48,7 +47,29 @@ function App() {
             exact
             component={IngredientSelection}
           />
-          <Route path={`/${routes.profile}`} exact component={ProfilePage} />
+          <Route
+            path={`/${routes.main}`}
+            render={(props) => 
+              <div>
+                <Navbar fill='home'/>
+                <MainRecipeModal/>  
+              </div>
+            }
+          />
+
+          <Route 
+            path= {`/${routes.adjustOptions}`} 
+            exact component={AdjustOptions} 
+          />
+          <Route 
+            path={`/${routes.profile}`} 
+            render={(props) => 
+              <div>
+                <Navbar fill='person'/>
+                <ProfilePage/>
+              </div>
+            }
+          /> 
         </Switch>
       </ThemeProvider>
     </BrowserRouter>

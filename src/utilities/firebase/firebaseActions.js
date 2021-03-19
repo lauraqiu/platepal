@@ -72,24 +72,22 @@ export const addBakingOption = (items) => {
     });
 };
 
-export const addLikedRecipe = (recipe) => {
-  var currentU = authenticateUser();
+export const addLikedRecipe = (recipe, section, title) => {
+  return new Promise(() => {
+    var currentU = authenticateUser();
 
-  firebase
-    .database()
-    .ref('userID/' + currentU + '/todayRecipe/Timestamp')
-    .update(
-      {
-        liked: recipe,
-      },
-      (error) => {
-        errorHandling(error);
-      }
-    );
-};
-
-export const superLike = () => {
-  // TODO: show full recipe
+    firebase
+      .database()
+      .ref('userID/' + currentU + '/todayRecipe/Timestamp/' + section + '/' + recipe)
+      .set(
+        {
+          recipe: title,
+        },
+        (error) => {
+          errorHandling(error);
+        }
+      )
+  });
 };
 
 export const updateMetric = (m) => {

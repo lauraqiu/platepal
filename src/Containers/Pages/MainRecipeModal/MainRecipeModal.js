@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './MainRecipeModal.module.scss';
-import pass from '../../../assets/images/pass.png';
-import star from '../../../assets/images/star.png';
-import check from '../../../assets/images/check.png';
+import pass from '../../../assets/images/x.svg';
+import star from '../../../assets/images/superlike.svg';
+import check from '../../../assets/images/checkmark.svg';
 import smoothie from '../../../assets/images/Creamy-Watermelon-Smoothie.jpg';
 //import dataFunctions from '../../../dataFunctions.js'
 
@@ -16,30 +16,51 @@ class MainRecipeModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      recipeCount: 0,
+      resp: null,
       spoonacularRecipe: [],
     };
   }
 
   componentDidMount() {
+    this.callAPI();
+  }
+
+  callAPI() {
     axiosInstance
-      .get(Spoonacular_routes.GET_RANDOM, {
-        params: {
-          number: 1,
-          apiKey: API_KEY,
-        },
-      })
-      .then((response) => {
-        console.log(response.data.recipes);
-        this.setState((prevState) => {
-          return {
-            spoonacularRecipe: response.data.recipes[0],
-          };
-        });
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
+    .get(Spoonacular_routes.GET_RANDOM, {
+      params: {
+        number: 20,
+        apiKey: API_KEY,
+      },
+    })
+    .then((response) => {
+      this.state.recipeCount=0;
+      this.state.resp=response;
+      this.updateRecipe(response)})
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+  }
+
+  updateRecipe(response) {
+    console.log(response.data.recipes);
+    this.setState((prevState) => {
+      return {
+        spoonacularRecipe: response.data.recipes[this.state.recipeCount],
+      };
+    });
+  }
+
+  moveToNext() {
+    //window.location.reload();
+    this.state.recipeCount++;
+
+    if (this.state.recipeCount >= 20)
+      this.callAPI();
+    else
+      this.updateRecipe(this.state.resp);
   }
 
   render() {
@@ -71,19 +92,25 @@ class MainRecipeModal extends React.Component {
           type='image'
           className={styles.bigButton}
           src={pass}
-          onClick={this.dislike}
+          onClick={() => this.moveToNext()}
         ></input>
         <input
           type='image'
           className={styles.lilButton}
           src={star}
-          onClick={this.star}
+          onClick={() => {
+            addLikedRecipe(this.state.spoonacularRecipe.id, "superliked", this.state.spoonacularRecipe.title)
+            .then(this.moveToNext());
+          }}
         ></input>
         <input
           type='image'
           className={styles.bigButton}
           src={check}
-          onClick={() => addLikedRecipe(this.state.spoonacularRecipe.id)}
+          onClick={() => {
+            addLikedRecipe(this.state.spoonacularRecipe.id, "liked", this.state.spoonacularRecipe.title)
+            .then(this.moveToNext());
+          }}
         ></input>
       </div>
     );

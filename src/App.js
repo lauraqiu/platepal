@@ -9,6 +9,7 @@ import ExpandedSavedRecipe from './Containers/Pages/ExpandedSavedRecipe/Expanded
 import ExpandedRecipe from './Containers/Pages/ExpandedRecipe/ExpandedRecipe.js';
 import IngredientSelection from './Containers/Pages/IngredientSelection/IngredientSelection.js';
 import ProfilePage from './Containers/Pages/ProfilePage/ProfilePage.js';
+import AdjustOptions from "./Containers/Pages/AdjustOptions/AdjustOptions.js";
 
 import { ThemeProvider } from '@material-ui/core';
 import mainUITheme from './assets/styles/mainUITheme';
@@ -54,6 +55,11 @@ function App() {
                 <MainRecipeModal/>  
               </div>
             }
+          />
+
+          <Route 
+            path= {`/${routes.adjustOptions}`} 
+            exact component={AdjustOptions} 
           />
           <Route 
             path={`/${routes.profile}`} 

@@ -1,22 +1,22 @@
 const constants = {
   // Users
-  userId: 'userID',
-  metrics: 'metrics',
-  allergies: 'allergies',
-  dietType: 'dietType',
-  preference: 'preference',
+  userId: "userID",
+  metrics: "metrics",
+  allergies: "allergies",
+  dietType: "dietType",
+  preference: "preference",
 
-  dairyOption: 'dairyOptions',
-  produceOption: 'produceOptions',
-  bakingOption: 'bakingOptions',
+  dairyOption: "dairyOptions",
+  produceOption: "produceOptions",
+  bakingOption: "bakingOptions",
 
   // Recipes
-  todayRecipe: 'todayRecipe',
-  savedRecipe: 'savedRecipe',
-  likedRecipe: 'likedRecipe',
-  superLikedRecipe: 'superLikedRecipe',
+  todayRecipe: "todayRecipe",
+  savedRecipe: "savedRecipe",
+  likedRecipe: "likedRecipe",
+  superLikedRecipe: "superLikedRecipe",
 
-  anonymous: 'anonymous',
+  anonymous: "anonymous",
 };
 
 export default constants;

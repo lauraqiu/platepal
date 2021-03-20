@@ -124,6 +124,24 @@ export const getPreferences = () => {
     .get();
 };
 
+export const saveRecipe = (recipe, title) => {
+  return new Promise(() => {
+    var currentU = authenticateUser();
+
+    firebase
+      .database()
+      .ref("userID/" + currentU + "/" + constants.savedRecipe + "/" + recipe)
+      .set(
+        {
+          recipe: title,
+        },
+        (error) => {
+          errorHandling(error);
+        }
+      );
+  });
+};
+
 export const getTodayRecipe = () => {
   var currentU = authenticateUser();
 

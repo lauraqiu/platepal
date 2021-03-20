@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CompressedRecipe.module.scss";
 import CostSummary from "./QuickSummaryItems/CostSummary/CostSummary.js";
 import CookingTimeSummary from "./QuickSummaryItems/CookingTimeSummary/CookingTimeSummary.js";
+import favoriteBtn from "../../assets/images/favorite_24px.svg";
+import filledFavoriteBtn from "../../assets/images/favorite_filled_24px.svg";
+import { saveRecipe } from "../../utilities/firebase/firebaseActions";
 
 const CompressedRecipe = (props) => {
+  const [selected, setSelected] = useState(false);
   const containerClass = props.superLiked
     ? styles.recipeContainerSuperLiked
     : styles.recipeContainer;
+
   return (
     <div className={containerClass}>
       <div className={styles.recipeInfoContainer}>
@@ -21,7 +26,19 @@ const CompressedRecipe = (props) => {
           className={styles.recipeImage}
           src={props.recipeImageSrc}
           alt="recipe"
-        ></img>
+        />
+        <button
+          className={styles.favoriteBtn}
+          onClick={() => {
+            saveRecipe(props.id, props.recipeName);
+            setSelected(!selected);
+          }}
+        >
+          <img
+            src={selected ? filledFavoriteBtn : favoriteBtn}
+            alt="favorite button"
+          />
+        </button>
       </div>
     </div>
   );

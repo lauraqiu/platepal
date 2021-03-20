@@ -44,6 +44,7 @@
   }
 }
 .recipeImageContainer {
+  position: relative;
   flex-basis: 5.625em;
   flex-grow: 0;
   flex-shrink: 0;
@@ -62,4 +63,10 @@
   flex: 1;
   box-sizing: border-box;
   overflow: hidden;
+}
+
+.favoriteBtn {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
 }

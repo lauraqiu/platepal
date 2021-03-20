@@ -1,31 +1,31 @@
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 
-import DietaryRestrictions from './Containers/Pages/DietaryRestrictions/DietaryRestrictions.js';
-import LoginPage from './Containers/Pages/Login/Login';
-import LandingPage from './Containers/Pages/LandingPage/LandingPage';
-import MetricPage from './Containers/Pages/Metrics/Metrics';
-import MainRecipeModal from './Containers/Pages/MainRecipeModal/MainRecipeModal';
-import ExpandedSavedRecipe from './Containers/Pages/ExpandedSavedRecipe/ExpandedSavedRecipe.js';
-import ExpandedRecipe from './Containers/Pages/ExpandedRecipe/ExpandedRecipe.js';
-import IngredientSelection from './Containers/Pages/IngredientSelection/IngredientSelection.js';
-import ProfilePage from './Containers/Pages/ProfilePage/ProfilePage.js';
+import DietaryRestrictions from "./Containers/Pages/DietaryRestrictions/DietaryRestrictions.js";
+import LoginPage from "./Containers/Pages/Login/Login";
+import LandingPage from "./Containers/Pages/LandingPage/LandingPage";
+import MetricPage from "./Containers/Pages/Metrics/Metrics";
+import MainRecipeModal from "./Containers/Pages/MainRecipeModal/MainRecipeModal";
+import ExpandedSavedRecipe from "./Containers/Pages/ExpandedSavedRecipe/ExpandedSavedRecipe.js";
+import ExpandedRecipe from "./Containers/Pages/ExpandedRecipe/ExpandedRecipe.js";
+import IngredientSelection from "./Containers/Pages/IngredientSelection/IngredientSelection.js";
+import ProfilePage from "./Containers/Pages/ProfilePage/ProfilePage.js";
 import AdjustOptions from "./Containers/Pages/AdjustOptions/AdjustOptions.js";
+import TodaysRecipe from "./Containers/Pages/TodaysRecipe/TodaysRecipe";
 
-import { ThemeProvider } from '@material-ui/core';
-import mainUITheme from './assets/styles/mainUITheme';
-import 'fontsource-roboto';
+import { ThemeProvider } from "@material-ui/core";
+import mainUITheme from "./assets/styles/mainUITheme";
+import "fontsource-roboto";
 
-import routes from './constant/routes';
-import Navbar from './component/navbars/Navbar.js';
+import routes from "./constant/routes";
+import Navbar from "./component/navbars/Navbar.js";
 
 function App() {
-
   return (
     <BrowserRouter>
       <ThemeProvider theme={mainUITheme}>
         <Switch>
           <Route path={`/${routes.login}`} component={LoginPage} />
-          <Route path='/' exact component={LandingPage} />
+          <Route path="/" exact component={LandingPage} />
           <Route path={`/${routes.metrics}`} exact component={MetricPage} />
           <Route
             path={`/${routes.dietaryRestriction}`}
@@ -49,27 +49,37 @@ function App() {
           />
           <Route
             path={`/${routes.main}`}
-            render={(props) => 
+            render={(props) => (
               <div>
-                <Navbar fill='home'/>
-                <MainRecipeModal/>  
+                <Navbar fill="home" />
+                <MainRecipeModal />
               </div>
-            }
+            )}
+          />
+          <Route
+            path={`/${routes.today}`}
+            render={(props) => (
+              <div>
+                <Navbar fill="bookmark" />
+                <TodaysRecipe />
+              </div>
+            )}
           />
 
-          <Route 
-            path= {`/${routes.adjustOptions}`} 
-            exact component={AdjustOptions} 
+          <Route
+            path={`/${routes.adjustOptions}`}
+            exact
+            component={AdjustOptions}
           />
-          <Route 
-            path={`/${routes.profile}`} 
-            render={(props) => 
+          <Route
+            path={`/${routes.profile}`}
+            render={(props) => (
               <div>
-                <Navbar fill='person'/>
-                <ProfilePage/>
+                <Navbar fill="person" />
+                <ProfilePage />
               </div>
-            }
-          /> 
+            )}
+          />
         </Switch>
       </ThemeProvider>
     </BrowserRouter>

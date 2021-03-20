@@ -1,5 +1,5 @@
-import constants from './firebaseConstants';
-import firebase from './firebase';
+import constants from "./firebaseConstants";
+import firebase from "./firebase";
 
 const authenticateUser = () => {
   var currentU = firebase.auth().currentUser;
@@ -10,10 +10,10 @@ const authenticateUser = () => {
 const errorHandling = (error) => {
   if (error) {
     // The write failed...
-    console.log('Write failed');
+    console.log("Write failed");
   } else {
     // Data saved successfully!
-    console.log('Write successful');
+    console.log("Write successful");
   }
 };
 
@@ -78,7 +78,14 @@ export const addLikedRecipe = (recipe, section, title) => {
 
     firebase
       .database()
-      .ref('userID/' + currentU + '/todayRecipe/Timestamp/' + section + '/' + recipe)
+      .ref(
+        "userID/" +
+          currentU +
+          "/todayRecipe/Timestamp/" +
+          section +
+          "/" +
+          recipe
+      )
       .set(
         {
           recipe: title,
@@ -86,7 +93,7 @@ export const addLikedRecipe = (recipe, section, title) => {
         (error) => {
           errorHandling(error);
         }
-      )
+      );
   });
 };
 
@@ -95,7 +102,7 @@ export const updateMetric = (m) => {
 
   firebase
     .database()
-    .ref('userID/' + currentU)
+    .ref("userID/" + currentU)
     .set(
       {
         preference: {
@@ -114,5 +121,14 @@ export const getPreferences = () => {
   return firebase
     .database()
     .ref(`userID/${currentU}/${constants.preference}`)
+    .get();
+};
+
+export const getTodayRecipe = () => {
+  var currentU = authenticateUser();
+
+  return firebase
+    .database()
+    .ref(`userID/${currentU}/${constants.todayRecipe}`)
     .get();
 };

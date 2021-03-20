@@ -6,4 +6,4 @@ export {
   addDairyOption,
   addProduceOption,
   addBakingOption,
-} from './firebaseActions';
+} from "./firebaseActions";

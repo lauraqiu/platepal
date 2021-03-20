@@ -1,16 +1,16 @@
-import React from 'react';
-import styles from './MainRecipeModal.module.scss';
-import pass from '../../../assets/images/x.svg';
-import star from '../../../assets/images/superlike.svg';
-import check from '../../../assets/images/checkmark.svg';
-import smoothie from '../../../assets/images/Creamy-Watermelon-Smoothie.jpg';
+import React from "react";
+import styles from "./MainRecipeModal.module.scss";
+import pass from "../../../assets/images/x.svg";
+import star from "../../../assets/images/superlike.svg";
+import check from "../../../assets/images/checkmark.svg";
+import smoothie from "../../../assets/images/Creamy-Watermelon-Smoothie.jpg";
 //import dataFunctions from '../../../dataFunctions.js'
 
-import { axiosInstance } from '../../../utilities/API/axiosInstance.js';
+import { axiosInstance } from "../../../utilities/API/axiosInstance.js";
 import Spoonacular_routes, {
   API_KEY,
-} from '../../../utilities/API/Spoonacular.js';
-import { addLikedRecipe } from '../../../utilities/firebase/index.js';
+} from "../../../utilities/API/Spoonacular.js";
+import { addLikedRecipe } from "../../../utilities/firebase/index.js";
 
 class MainRecipeModal extends React.Component {
   constructor(props) {
@@ -28,24 +28,24 @@ class MainRecipeModal extends React.Component {
 
   callAPI() {
     axiosInstance
-    .get(Spoonacular_routes.GET_RANDOM, {
-      params: {
-        number: 20,
-        apiKey: API_KEY,
-      },
-    })
-    .then((response) => {
-      this.state.recipeCount=0;
-      this.state.resp=response;
-      this.updateRecipe(response)})
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    });
+      .get(Spoonacular_routes.GET_RANDOM, {
+        params: {
+          number: 20,
+          apiKey: API_KEY,
+        },
+      })
+      .then((response) => {
+        this.state.recipeCount = 0;
+        this.state.resp = response;
+        this.updateRecipe(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
   }
 
   updateRecipe(response) {
-    console.log(response.data.recipes);
     this.setState((prevState) => {
       return {
         spoonacularRecipe: response.data.recipes[this.state.recipeCount],
@@ -57,17 +57,15 @@ class MainRecipeModal extends React.Component {
     //window.location.reload();
     this.state.recipeCount++;
 
-    if (this.state.recipeCount >= 20)
-      this.callAPI();
-    else
-      this.updateRecipe(this.state.resp);
+    if (this.state.recipeCount >= 20) this.callAPI();
+    else this.updateRecipe(this.state.resp);
   }
 
   render() {
     // This will later come from Spoonacular API
-    const name = 'Creamy Watermelon Smoothie';
-    const percentage = '87%';
-    const price = '$';
+    const name = "Creamy Watermelon Smoothie";
+    const percentage = "87%";
+    const price = "$";
 
     return (
       <div className={styles.fullPage}>
@@ -89,27 +87,33 @@ class MainRecipeModal extends React.Component {
           </label>
         </div>
         <input
-          type='image'
+          type="image"
           className={styles.bigButton}
           src={pass}
           onClick={() => this.moveToNext()}
         ></input>
         <input
-          type='image'
+          type="image"
           className={styles.lilButton}
           src={star}
           onClick={() => {
-            addLikedRecipe(this.state.spoonacularRecipe.id, "superliked", this.state.spoonacularRecipe.title)
-            .then(this.moveToNext());
+            addLikedRecipe(
+              this.state.spoonacularRecipe.id,
+              "superliked",
+              this.state.spoonacularRecipe.title
+            ).then(this.moveToNext());
           }}
         ></input>
         <input
-          type='image'
+          type="image"
           className={styles.bigButton}
           src={check}
           onClick={() => {
-            addLikedRecipe(this.state.spoonacularRecipe.id, "liked", this.state.spoonacularRecipe.title)
-            .then(this.moveToNext());
+            addLikedRecipe(
+              this.state.spoonacularRecipe.id,
+              "liked",
+              this.state.spoonacularRecipe.title
+            ).then(this.moveToNext());
           }}
         ></input>
       </div>

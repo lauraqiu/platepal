@@ -79,6 +79,8 @@ class TodaysRecipe extends React.Component {
           pricePerServing={item.pricePerServing}
           readyInMinutes={item.readyInMinutes}
           recipeImageSrc={item.image}
+          id={item.id}
+          isFavorite={false}
         />
       );
     });
@@ -91,6 +93,8 @@ class TodaysRecipe extends React.Component {
           pricePerServing={item.pricePerServing}
           readyInMinutes={item.readyInMinutes}
           recipeImageSrc={item.image}
+          id={item.id}
+          isFavorite={false}
         />
       );
     });

@@ -150,3 +150,12 @@ export const getTodayRecipe = () => {
     .ref(`userID/${currentU}/${constants.todayRecipe}`)
     .get();
 };
+
+export const getSavedRecipe = () => {
+  var currentU = authenticateUser();
+
+  return firebase
+    .database()
+    .ref("userID/" + currentU + "/" + constants.savedRecipe)
+    .get();
+};

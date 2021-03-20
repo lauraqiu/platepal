@@ -18,6 +18,7 @@ import "fontsource-roboto";
 
 import routes from "./constant/routes";
 import Navbar from "./component/navbars/Navbar.js";
+import SavedRecipePage from "./Containers/Pages/SavedRecipePage/SavedRecipePage.js";
 
 function App() {
   return (
@@ -77,6 +78,15 @@ function App() {
               <div>
                 <Navbar fill="person" />
                 <ProfilePage />
+              </div>
+            )}
+          />
+          <Route
+            path={`/${routes.favorite}`}
+            render={(props) => (
+              <div>
+                <Navbar fill="heart" />
+                <SavedRecipePage />
               </div>
             )}
           />

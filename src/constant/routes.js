@@ -11,6 +11,7 @@ const routes = {
   ingredientSelection: "ingredientSelection",
   expandedSavedRecipe: "expandedSavedRecipe",
   adjustOptions: "adjustOptions",
+  favorite: "favorite",
 };
 
 export default routes;

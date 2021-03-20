@@ -7,7 +7,7 @@ import filledFavoriteBtn from "../../assets/images/favorite_filled_24px.svg";
 import { saveRecipe } from "../../utilities/firebase/firebaseActions";
 
 const CompressedRecipe = (props) => {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(props.isFavorite);
   const containerClass = props.superLiked
     ? styles.recipeContainerSuperLiked
     : styles.recipeContainer;

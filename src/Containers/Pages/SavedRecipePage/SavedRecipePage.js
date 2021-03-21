@@ -47,6 +47,7 @@ export class SavedRecipePage extends Component {
                 };
 
                 this.state.savedRecipe.push(newObj);
+                return newObj;
               });
               this.setState({ loading: false });
             });
@@ -65,7 +66,7 @@ export class SavedRecipePage extends Component {
   };
 
   generateRecipeTiles() {
-    const savedRecipeTiles = this.state.savedRecipe.map((item) => {
+    const savedRecipeTiles = this.state.savedRecipe.map((item, index) => {
       return (
         <CompressedRecipe
           recipeName={item.title}
@@ -74,6 +75,7 @@ export class SavedRecipePage extends Component {
           recipeImageSrc={item.image}
           id={item.id}
           isFavorite={true}
+          key={item.id + index}
         />
       );
     });

@@ -50,7 +50,7 @@ const Search = (props) => {
           className={styles.backBtn}
           onClick={() => props.setShowSearch(false)}
         >
-          <img src={backBtn} />
+          <img src={backBtn} alt={"back"} />
         </button>
         <label className={styles.label}>{props.header}</label>
         <div></div>

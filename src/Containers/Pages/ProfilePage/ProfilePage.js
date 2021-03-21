@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router';
-import styles from './ProfilePage.module.scss';
-import profilePageImg from '../../../assets/images/profilepagepicture.png';
-import ProfileRestrictionInfo from '../../../component/ProfileRestrictionInfo/ProfileRestrictionInfo.js';
-import { getPreferences } from '../../../utilities/firebase/index.js';
-import LogoutBtn from '../../../component/LogoutBtn/LogoutBtn.js';
-import ProfileMetricInfo from '../../../component/ProfileMetricInfo/ProfileMetricInfo.js';
+import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router";
+import styles from "./ProfilePage.module.scss";
+import profilePageImg from "../../../assets/images/profilepagepicture.png";
+import ProfileRestrictionInfo from "../../../component/ProfileRestrictionInfo/ProfileRestrictionInfo.js";
+import { getPreferences } from "../../../utilities/firebase/index.js";
+import LogoutBtn from "../../../component/LogoutBtn/LogoutBtn.js";
+import ProfileMetricInfo from "../../../component/ProfileMetricInfo/ProfileMetricInfo.js";
 
 const ProfilePage = (props) => {
   const initialState = {
@@ -22,20 +22,20 @@ const ProfilePage = (props) => {
         setUserPreferences((prevState) => {
           return {
             ...prevState,
-            allergies: dataItem.allergies,
-            diet: dataItem.diet,
+            allergies: dataItem.allergies ? dataItem.allergies : [],
+            diet: dataItem.diet ? dataItem.diet : [],
             metric: dataItem.metric,
           };
         });
       },
       (error) => {
-        console.log('ERROR');
+        console.log("ERROR");
       }
     );
   }, []);
 
   const logoutHandler = () => {
-    props.history.push('/');
+    props.history.push("/");
   };
 
   return (
@@ -44,18 +44,18 @@ const ProfilePage = (props) => {
         <img
           className={styles.profilePicture}
           src={profilePageImg}
-          alt='Profile'
+          alt="Profile"
         />
         <h3>FULL NAME</h3>
       </div>
       <div className={styles.profileSettingsContainer}>
         <h3 className={styles.preferenceType}>Dietary Restrictions</h3>
         <ProfileRestrictionInfo
-          preferenceTitle='Allergies'
+          preferenceTitle="Allergies"
           preferenceArr={userPreferences.allergies}
         />
         <ProfileRestrictionInfo
-          preferenceTitle='Diet'
+          preferenceTitle="Diet"
           preferenceArr={userPreferences.diet}
         />
         <ProfileMetricInfo preferenceArr={userPreferences.metric} />

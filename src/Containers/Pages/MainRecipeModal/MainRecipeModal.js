@@ -3,9 +3,6 @@ import styles from "./MainRecipeModal.module.scss";
 import pass from "../../../assets/images/x.svg";
 import star from "../../../assets/images/superlike.svg";
 import check from "../../../assets/images/checkmark.svg";
-import smoothie from "../../../assets/images/Creamy-Watermelon-Smoothie.jpg";
-//import dataFunctions from '../../../dataFunctions.js'
-
 import { axiosInstance } from "../../../utilities/API/axiosInstance.js";
 import Spoonacular_routes, {
   API_KEY,
@@ -35,8 +32,10 @@ class MainRecipeModal extends React.Component {
         },
       })
       .then((response) => {
-        this.state.recipeCount = 0;
-        this.state.resp = response;
+        this.setState({
+          recipeCount: 0,
+          resp: response,
+        });
         this.updateRecipe(response);
       })
       .catch(function (error) {
@@ -54,18 +53,17 @@ class MainRecipeModal extends React.Component {
   }
 
   moveToNext() {
-    //window.location.reload();
-    this.state.recipeCount++;
-
+    this.setState((prevState) => {
+      return {
+        recipeCount: prevState.recipeCount++,
+      };
+    });
     if (this.state.recipeCount >= 20) this.callAPI();
     else this.updateRecipe(this.state.resp);
   }
 
   render() {
     // This will later come from Spoonacular API
-    const name = "Creamy Watermelon Smoothie";
-    const percentage = "87%";
-    const price = "$";
 
     return (
       <div className={styles.fullPage}>
@@ -75,7 +73,7 @@ class MainRecipeModal extends React.Component {
         <div className={styles.recipe}>
           <img
             src={this.state.spoonacularRecipe.image}
-            alt={name}
+            alt={this.state.spoonacularRecipe.title}
             className={styles.recipeImage}
             onClick={this.imageClicked}
           ></img>
@@ -90,12 +88,14 @@ class MainRecipeModal extends React.Component {
           type="image"
           className={styles.bigButton}
           src={pass}
+          alt={"pass"}
           onClick={() => this.moveToNext()}
         ></input>
         <input
           type="image"
           className={styles.lilButton}
           src={star}
+          alt={"super like"}
           onClick={() => {
             addLikedRecipe(
               this.state.spoonacularRecipe.id,
@@ -108,6 +108,7 @@ class MainRecipeModal extends React.Component {
           type="image"
           className={styles.bigButton}
           src={check}
+          alt={"like"}
           onClick={() => {
             addLikedRecipe(
               this.state.spoonacularRecipe.id,

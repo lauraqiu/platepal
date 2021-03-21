@@ -17,6 +17,7 @@ exports[`renders correctly 1`] = `
   </h3>
   <button
     className="loginButton"
+    onClick={[Function]}
   >
     Login
   </button>

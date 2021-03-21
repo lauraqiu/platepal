@@ -54,6 +54,7 @@ class TodaysRecipe extends React.Component {
                 } else {
                   this.state.superlikedRecipe.push(newObj);
                 }
+                return newObj;
               });
               this.setState({ loading: false });
             });
@@ -81,6 +82,7 @@ class TodaysRecipe extends React.Component {
           recipeImageSrc={item.image}
           id={item.id}
           isFavorite={false}
+          key={item.id}
         />
       );
     });
@@ -95,6 +97,7 @@ class TodaysRecipe extends React.Component {
           recipeImageSrc={item.image}
           id={item.id}
           isFavorite={false}
+          key={item.id}
         />
       );
     });
@@ -108,6 +111,7 @@ class TodaysRecipe extends React.Component {
       : null;
     return (
       <div className={styles.fullPage}>
+        <h2 className={styles.label}>Today's Recipes</h2>
         {this.state.loading && "loading"}
         {compressedRecipeCollection}
       </div>

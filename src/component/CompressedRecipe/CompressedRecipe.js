@@ -38,7 +38,9 @@ const CompressedRecipe = (props) => {
         />
         <button
           className={styles.favoriteBtn}
-          onClick={() => {
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
             saveRecipe(props.id, props.recipeName);
             setSelected(!selected);
           }}

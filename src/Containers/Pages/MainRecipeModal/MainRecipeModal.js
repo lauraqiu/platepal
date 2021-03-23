@@ -55,7 +55,7 @@ class MainRecipeModal extends React.Component {
   moveToNext() {
     this.setState((prevState) => {
       return {
-        recipeCount: prevState.recipeCount++,
+        recipeCount: prevState.recipeCount + 1,
       };
     });
     if (this.state.recipeCount >= 20) this.callAPI();
@@ -81,7 +81,7 @@ class MainRecipeModal extends React.Component {
             {this.state.spoonacularRecipe.healthScore}
           </label>
           <label className={styles.infoLabel2}>
-            {this.state.spoonacularRecipe.pricePerServing}
+            {"$" + this.state.spoonacularRecipe.pricePerServing}
           </label>
         </div>
         <input

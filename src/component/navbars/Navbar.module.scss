@@ -1,11 +1,12 @@
 .bottomNavContainer {
-  position: absolute;
+  position: fixed;
   bottom: 0%;
   display: flex;
   flex-direction: row;
   width: 100%;
   border-top: 0.3px solid #db5a42;
   text-align: center;
+  background-color: white;
 
   .navButton {
     display: flex;

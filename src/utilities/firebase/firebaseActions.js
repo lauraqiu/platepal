@@ -19,6 +19,7 @@ const errorHandling = (error) => {
 
 export const addAllergy = (allergies) => {
   var currentU = authenticateUser();
+  currentU="anonymous";
 
   firebase
     .database()
@@ -30,6 +31,7 @@ export const addAllergy = (allergies) => {
 
 export const addSpecialDiet = (diet) => {
   var currentU = authenticateUser();
+  currentU="anonymous";
 
   firebase
     .database()
@@ -99,6 +101,7 @@ export const addLikedRecipe = (recipe, section, title) => {
 
 export const updateMetric = (m) => {
   var currentU = authenticateUser();
+  currentU="anonymous";
 
   firebase
     .database()
@@ -120,7 +123,7 @@ export const getPreferences = () => {
 
   return firebase
     .database()
-    .ref(`userID/${currentU}/${constants.preference}`)
+    .ref(`userID/anonymous/${constants.preference}`)
     .get();
 };
 
